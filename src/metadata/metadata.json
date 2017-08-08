@@ -1,0 +1,2347 @@
+{
+  "package": "Strava",
+  "tagline": "Strava API",
+  "description": "Strava is the social network for athletes. We’re a global community of millions of runners, cyclists and triathletes, united by the camaraderie of sport. ",
+  "image": "http:\/\/logo.clearbit.com\/strava.com",
+  "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-Strava-Package",
+  "keywords": [
+    "API",
+    "sport",
+    "sportsman",
+    "athlete",
+    "running",
+    "gear"
+  ],
+  "accounts": {
+    "domain": "strava.com",
+    "credentials": [
+      "clientId",
+      "clientSecret"
+    ]
+  },
+  "events": [
+    {
+      "name": "webhookEvent",
+      "description": "This method is called every time a Strava webhook event occurs",
+      "payload": {
+        "subscription_id": "1",
+        "owner_id": 13408,
+        "object_id": 12312312312,
+        "object_type": "activity",
+        "aspect_type": "create",
+        "event_time": 1297286541
+      },
+      "steps": [
+        "You can add a webhook using addWebhook block"
+      ],
+      "args": [
+        {
+          "name": "token",
+          "type": "string",
+          "info": "Token sent on each message",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "name": "getAccessToken",
+      "description": "Get access token",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "Client id from Strava",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "Client secret from Strava",
+          "required": true
+        },
+        {
+          "name": "code",
+          "type": "String",
+          "info": "Code provided by user",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeAccessToken",
+      "description": "Revoke access token",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listFriends",
+      "description": "List athlete's friends",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "String",
+          "info": "Id of the Strava athlete",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listFollowers",
+      "description": "List athlete's followers",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "String",
+          "info": "Id of the Strava athlete",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listBothFollowing",
+      "description": "Retrieve the athletes who both the authenticated user and the indicated athlete are following.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "String",
+          "info": "Id of the Strava athlete",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCurrentAthlete",
+      "description": "This request is used to retrieve information about the currently authenticated athlete.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAnotherAthlete",
+      "description": "This request is used to retrieve information about any athlete on Strava.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "String",
+          "info": "Id of the Strava athlete",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateCurrentAthlete",
+      "description": "Update current athlete's information on Strava.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "city",
+          "type": "String",
+          "info": "Athlete's city",
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "String",
+          "info": "Athlete's state",
+          "required": false
+        },
+        {
+          "name": "country",
+          "type": "String",
+          "info": "Athlete's country",
+          "required": false
+        },
+        {
+          "name": "sex",
+          "type": "Select",
+          "options": [
+            "M",
+            "F",
+            "rather not say"
+          ],
+          "info": "Athlete's sex",
+          "required": false
+        },
+        {
+          "name": "weight",
+          "type": "String",
+          "info": "Athlete's weight",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getZones",
+      "description": "Returns the heart rate and power zones of the requesting athlete.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTotalsAndStats",
+      "description": "Returns recent (last 4 weeks), year to date and all time stats for a given athlete.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "String",
+          "info": "Id of the Strava athlete. Must match the authenticated athlete",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getKomsAndQoms",
+      "description": "Returns an array of segment efforts representing Overall KOMs/QOMs and course records held by the given athlete. Yearly KOMs are not included.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "String",
+          "info": "Id of the Strava athlete",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listActivityComments",
+      "description": "The number of comments is included in the activity summary and detail responses.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listActivityKudos",
+      "description": "A kudos is Strava’s version of a ‘Like’ or a ‘+1’. The number of kudos on an activity is returned with the activity summary.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listActivityPhotos",
+      "description": "The number of photos is included in the activity summary and detail responses. Use this endpoint to retrieve a list of photos associated with this activity. This endpoint can only be accessed by the owner of the activity.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createActivity",
+      "description": "Create new activity",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityName",
+          "type": "String",
+          "info": "Name of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "activityType",
+          "type": "Select",
+          "options": [
+            "ride",
+            "run",
+            "swim",
+            "workout",
+            "hike",
+            "walk",
+            "nordicski",
+            "alpineski",
+            "backcountryski",
+            "iceskate",
+            "inlineskate",
+            "kitesurf",
+            "rollerski",
+            "windsurf",
+            "workout",
+            "snowboard",
+            "snowshoe",
+            "ebikeride",
+            "virtualride"
+          ],
+          "info": "Type of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "startDate",
+          "type": "DatePicker",
+          "info": "Start date of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "elapsedTime",
+          "type": "Number",
+          "info": "Elapsed time in seconds of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "Description of the Strava activity",
+          "required": false
+        },
+        {
+          "name": "distance",
+          "type": "Number",
+          "info": "Distance of the Strava activity",
+          "required": false
+        },
+        {
+          "name": "private",
+          "type": "Boolean",
+          "info": "Whether this is private activity",
+          "required": false
+        },
+        {
+          "name": "trainer",
+          "type": "Boolean",
+          "info": "Whether this is trainer activity",
+          "required": false
+        },
+        {
+          "name": "commute",
+          "type": "Boolean",
+          "info": "Whether this is commute activity",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleActivity",
+      "description": "Returns a detailed representation if the activity is owned by the requesting athlete. ",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "includeAllEfforts",
+          "type": "Boolean",
+          "info": "Used to include all segment efforts in the Result",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateActivity",
+      "description": "Update existing activity",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "activityName",
+          "type": "String",
+          "info": "Name of the Strava activity",
+          "required": false
+        },
+        {
+          "name": "activityType",
+          "type": "Select",
+          "options": [
+            "ride",
+            "run",
+            "swim",
+            "workout",
+            "hike",
+            "walk",
+            "nordicski",
+            "alpineski",
+            "backcountryski",
+            "iceskate",
+            "inlineskate",
+            "kitesurf",
+            "rollerski",
+            "windsurf",
+            "workout",
+            "snowboard",
+            "snowshoe",
+            "ebikeride",
+            "virtualride"
+          ],
+          "info": "Type of the Strava activity",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "Description of the Strava activity",
+          "required": false
+        },
+        {
+          "name": "gearId",
+          "type": "String",
+          "info": "Gear ID of the Strava activity",
+          "required": false
+        },
+        {
+          "name": "private",
+          "type": "Boolean",
+          "info": "Whether this is private activity",
+          "required": false
+        },
+        {
+          "name": "trainer",
+          "type": "Boolean",
+          "info": "Whether this is trainer activity",
+          "required": false
+        },
+        {
+          "name": "commute",
+          "type": "Boolean",
+          "info": "Whether this is commute activity",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listMyActivities",
+      "description": "This endpoint returns a list of activities for the authenticated user.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "before",
+          "type": "DatePicker",
+          "info": "Result will start with activities whose startDate is before this value",
+          "required": false
+        },
+        {
+          "name": "after",
+          "type": "DatePicker",
+          "info": "Result will start with activities whose startDate is after this value",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listRelatedActivities",
+      "description": "Returns the activities that were matched as “with this group”.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listFriendsActivities",
+      "description": "List the recent activities performed by the current athlete and those they are following",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "before",
+          "type": "DatePicker",
+          "info": "Result will start with activities whose startDate is before this value",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listActivityZones",
+      "description": "Heartrate and power zones are set by the athlete. This endpoint returns the time (seconds) in each zone.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listActivityLaps",
+      "description": "This resource will return all laps for an activity. Laps are triggered by athletes using their respective devices, such as Garmin watches.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGroupEvent",
+      "description": "Retrieve group event",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "groupEventId",
+          "type": "String",
+          "info": "Id of the Strava group event",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listClubGroupEvents",
+      "description": "Returns an array of club group event summary representations ordered by occurrence time.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": true
+        },
+        {
+          "name": "upcoming",
+          "type": "String",
+          "info": "Only include future events if true",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "joinGroupEvent",
+      "description": "Join group event",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "groupEventId",
+          "type": "String",
+          "info": "Id of the Strava group event",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "leaveGroupEvent",
+      "description": "Leave group event",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "groupEventId",
+          "type": "String",
+          "info": "Id of the Strava group event",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteGroupEvent",
+      "description": "Delete group event",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "groupEventId",
+          "type": "String",
+          "info": "Id of the Strava group event",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listJoinedAthletes",
+      "description": "Retrieve summary information about athletes joined a specific group event, or the upcoming occurrence for recurring events.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "groupEventId",
+          "type": "String",
+          "info": "Id of the Strava group event",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleClub",
+      "description": "Retrieve details about a specific club.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listMyClubs",
+      "description": "Fetch an array of clubs that the currently authenticated athlete is a member of.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listClubMembers",
+      "description": "Retrieve summary information about members of a specific club.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listClubAdmins",
+      "description": "Retrieve summary information about admins of a specific club.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listClubActivities",
+      "description": "Retrieve summary information about activities of a specific club.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        },
+        {
+          "name": "before",
+          "type": "DatePicker",
+          "info": "Result will start with activities whose startDate is before this value",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "joinClub",
+      "description": "Join a club on behalf of the authenticated athlete. If the club is private the join will need to be approved by a club admin unless the authenticated athlete had previously been invited to the club.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "leaveClub",
+      "description": "Leave a club on behalf of the authenticated user. ",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleGear",
+      "description": "Retrieve details about a specific item of gear. The requesting athlete must own the gear. At this time it is not possible to view just anyone’s gear type and usage.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "gearId",
+          "type": "String",
+          "info": "Id of the Strava gear",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleRoute",
+      "description": "Retrieve details about a specific item of gear. The requesting athlete must own the gear. At this time it is not possible to view just anyone’s gear type and usage.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "routeId",
+          "type": "String",
+          "info": "Id of the Strava route",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listRoutes",
+      "description": "Lists a specific athlete’s routes. Private routes will only be included if the authenticating user is viewing their own routes and the token has view_private permissions.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "String",
+          "info": "Id of the Strava athlete",
+          "required": true
+        },
+        {
+          "name": "after",
+          "type": "DatePicker",
+          "info": "Result will start with activities whose startDate is after this value",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "Select",
+          "options": [
+            "run",
+            "ride"
+          ],
+          "info": "Route type",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listRaces",
+      "description": "This request is used to retrieve a list of races occurring in a year, ordered by occurrence date from oldest to most recent.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "year",
+          "type": "Number",
+          "info": "Defaults to the current year",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleRace",
+      "description": "This request is used to retrieve details about a running race.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "raceId",
+          "type": "String",
+          "info": "Id of the Strava race",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleSegment",
+      "description": "This request is used to retrieve details about a single segment",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "segmentId",
+          "type": "String",
+          "info": "Id of the Strava segment",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listStarredSegments",
+      "description": "Returns a summary representation of the segments starred by the authenticated user.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "starSingleSegment",
+      "description": "This request is used to star single segment",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "segmentId",
+          "type": "String",
+          "info": "Id of the Strava segment",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "unstarSingleSegment",
+      "description": "This request is used to unstar single segment",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "segmentId",
+          "type": "String",
+          "info": "Id of the Strava segment",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listSegmentEfforts",
+      "description": "Retrieve an array of segment efforts, for a given segment, filtered by athlete and/or a date range.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "segmentId",
+          "type": "String",
+          "info": "Id of the Strava segment",
+          "required": true
+        },
+        {
+          "name": "athleteId",
+          "type": "String",
+          "info": "Id of the Strava athlete",
+          "required": false
+        },
+        {
+          "name": "startDate",
+          "type": "DatePicker",
+          "info": "Date range filtering is accomplished using an inclusive start and end time, thus startDate and endDate must be sent together. ",
+          "required": true
+        },
+        {
+          "name": "endDate",
+          "type": "DatePicker",
+          "info": "Date range filtering is accomplished using an inclusive start and end time, thus startDate and endDate must be sent together. ",
+          "required": true
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSegmentLeaderboards",
+      "description": "Leaderboards represent the ranking of athletes on specific segments.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "segmentId",
+          "type": "String",
+          "info": "Id of the Strava segment",
+          "required": true
+        },
+        {
+          "name": "ageGroup",
+          "type": "Select",
+          "options": [
+            "0_24",
+            "25_34",
+            "35_44",
+            "45_54",
+            "55_64",
+            "65_plus"
+          ],
+          "info": "Age group of athletes",
+          "required": false
+        },
+        {
+          "name": "weightClass",
+          "type": "Select",
+          "options": [
+            "0_54",
+            "55_64",
+            "65_74",
+            "75_84",
+            "85_94",
+            "95_plus"
+          ],
+          "info": "Weight class of athletes in kg",
+          "required": false
+        },
+        {
+          "name": "following",
+          "type": "Boolean",
+          "info": "Include athletes which are followed",
+          "required": false
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": false
+        },
+        {
+          "name": "dateRange",
+          "type": "Select",
+          "options": [
+            "this_year",
+            "this_month",
+            "this_week",
+            "today"
+          ],
+          "info": "Date range of results",
+          "required": false
+        },
+        {
+          "name": "contextEntries",
+          "type": "Number",
+          "info": "Default is 2, max of 15",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "Number",
+          "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "info": "Number of items per page to return",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSegmentsByCoordinates",
+      "description": "This endpoint can be used to find popular segments within a given area.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "swCoordinates",
+          "type": "Map",
+          "info": "South west corner coordinates of the area",
+          "required": true
+        },
+        {
+          "name": "neCoordinates",
+          "type": "Map",
+          "info": "North east corner coordinates of the area",
+          "required": true
+        },
+        {
+          "name": "activityType",
+          "type": "Select",
+          "options": [
+            "running",
+            "riding",
+            "this_week",
+            "today"
+          ],
+          "info": "Type of activity. Default is riding",
+          "required": false
+        },
+        {
+          "name": "minCategory",
+          "type": "Number",
+          "info": "Minimum climb category filter",
+          "required": false
+        },
+        {
+          "name": "maxCategory",
+          "type": "Number",
+          "info": "Maximum climb category filter",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSegmentSingleEffort",
+      "description": "Retrieve details about a specific segment effort. The effort must be public or it must correspond to the current athlete.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "effortId",
+          "type": "String",
+          "info": "Id of the segment effort",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getActivityStreams",
+      "description": "Retrieve details about a specific segment effort. The effort must be public or it must correspond to the current athlete.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityId",
+          "type": "String",
+          "info": "Id of the Strava activity",
+          "required": true
+        },
+        {
+          "name": "types",
+          "type": "List",
+          "structure": {
+            "name": "type",
+            "type": "String",
+            "info": "Single type"
+          },
+          "info": ":List of types, if the activity does not have that stream it will not be included in the response",
+          "required": true
+        },
+        {
+          "name": "resolution",
+          "type": "Select",
+          "options": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "info": "Default is all, indicates desired number of data points, streams will only be down sampled",
+          "required": false
+        },
+        {
+          "name": "seriesType",
+          "type": "Select",
+          "options": [
+            "time",
+            "distance"
+          ],
+          "info": "Relevant only if using resolution, used to index the streams if the stream is being reduced",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getEffortStreams",
+      "description": "A segment effort represents an attempt on a segment. This resource returns a subset of the activity streams that correspond to that effort.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "effortId",
+          "type": "String",
+          "info": "Id of the Strava effort",
+          "required": true
+        },
+        {
+          "name": "types",
+          "type": "List",
+          "structure": {
+            "name": "type",
+            "type": "String",
+            "info": "Single type"
+          },
+          "info": ":List of types, if the activity does not have that stream it will not be included in the response",
+          "required": true
+        },
+        {
+          "name": "resolution",
+          "type": "Select",
+          "options": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "info": "Default is all, indicates desired number of data points, streams will only be down sampled",
+          "required": false
+        },
+        {
+          "name": "seriesType",
+          "type": "Select",
+          "options": [
+            "time",
+            "distance"
+          ],
+          "info": "Relevant only if using resolution, used to index the streams if the stream is being reduced",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSegmentStreams",
+      "description": "This resource returns a subset of the activity streams that correspond to segment. Only distance, altitude and latlng stream types are available.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "effortId",
+          "type": "String",
+          "info": "Id of the Strava effort",
+          "required": true
+        },
+        {
+          "name": "types",
+          "type": "List",
+          "structure": {
+            "name": "type",
+            "type": "String",
+            "info": "Single type"
+          },
+          "info": ":List of types, if the activity does not have that stream it will not be included in the response",
+          "required": true
+        },
+        {
+          "name": "resolution",
+          "type": "Select",
+          "options": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "info": "Default is all, indicates desired number of data points, streams will only be down sampled",
+          "required": false
+        },
+        {
+          "name": "seriesType",
+          "type": "Select",
+          "options": [
+            "time",
+            "distance"
+          ],
+          "info": "Relevant only if using resolution, used to index the streams if the stream is being reduced",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getRouteStreams",
+      "description": "This resource returns a subset of the activity streams that correspond to route. Distance, altitude and latlng stream types are always returned.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "routeId",
+          "type": "String",
+          "info": "Id of the Strava route",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "uploadActivity",
+      "description": "Posting a file for upload will enqueue it for processing. Initial checks will be done for malformed data and duplicates.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "activityFile",
+          "type": "File",
+          "info": "The actual activity data, if gzipped the data_type must end with .gz",
+          "required": true
+        },
+        {
+          "name": "dataType",
+          "type": "Select",
+          "options": [
+            "fit",
+            "fit.gz",
+            "tcx",
+            "tcx.gz",
+            "gpx",
+            "gpx.gz"
+          ],
+          "info": "Data type of the file",
+          "required": true
+        },
+        {
+          "name": "activityType",
+          "type": "Select",
+          "options": [
+            "ride",
+            "run",
+            "swim",
+            "workout",
+            "hike",
+            "walk",
+            "nordicski",
+            "alpineski",
+            "backcountryski",
+            "iceskate",
+            "inlineskate",
+            "kitesurf",
+            "rollerski",
+            "windsurf",
+            "workout",
+            "snowboard",
+            "snowshoe",
+            "ebikeride",
+            "virtualride"
+          ],
+          "info": "Type of the Strava activity",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Activity name. If not provided, will be populated using start date and location, if available",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "Activity description.",
+          "required": false
+        },
+        {
+          "name": "private",
+          "type": "Boolean",
+          "info": "Whether this is private activity",
+          "required": false
+        },
+        {
+          "name": "trainer",
+          "type": "Boolean",
+          "info": "Whether this is trainer activity. activities without lat/lng info in the file are auto marked as stationary, set to true to force",
+          "required": false
+        },
+        {
+          "name": "commute",
+          "type": "Boolean",
+          "info": "Whether this is commute activity",
+          "required": false
+        },
+        {
+          "name": "externalId",
+          "type": "String",
+          "info": "Data filename will be used by default but should be a unique identifie",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkUploadStatus",
+      "description": "Upon upload, Strava will respond with an upload ID. You may use this ID to poll the status of your upload.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "uploadId",
+          "type": "String",
+          "info": "Id of the upload",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addWebhook",
+      "description": "Add new webhook",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "Client id from Strava",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "Client secret from Strava",
+          "required": true
+        },
+        {
+          "name": "objectType",
+          "type": "String",
+          "info": "Must match one of the supported object types. E.g. : activity",
+          "required": true
+        },
+        {
+          "name": "aspectType",
+          "type": "String",
+          "info": "Must match one of the supported aspect types. E.g.: create",
+          "required": true
+        },
+        {
+          "name": "webhookUrl",
+          "type": "String",
+          "info": "You can use our service as webhookUrl. https://webhooks.rapidapi.io/api/message/Strava/webhookEvent/{projectName}/{projectKey}. See details above",
+          "required": true
+        },
+        {
+          "name": "verifyToken",
+          "type": "String",
+          "info": "User state specified by the user",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "listWebhooks",
+      "description": "This request is used to retrieve the summary representations of the push subscriptions in place for the current application.",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "Client id from Strava",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "Client secret from Strava",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteWebhook",
+      "description": "Delete existing webhook",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "Client id from Strava",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "Client secret from Strava",
+          "required": true
+        },
+        {
+          "name": "webhookId",
+          "type": "String",
+          "info": "Id of the webhook",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
+}
