@@ -523,7 +523,7 @@ This resource returns a subset of the activity streams that correspond to segmen
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token provided received from Strava
-| effortId   | String| Id of the Strava effort
+| segmentId   | String| Id of the Strava segment
 | types      | List  | :List of types, if the activity does not have that stream it will not be included in the response
 | resolution | Select| Default is all, indicates desired number of data points, streams will only be down sampled
 | seriesType | Select| Relevant only if using resolution, used to index the streams if the stream is being reduced

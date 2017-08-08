@@ -2019,9 +2019,9 @@
           "required": true
         },
         {
-          "name": "effortId",
+          "name": "segmentId",
           "type": "String",
-          "info": "Id of the Strava effort",
+          "info": "Id of the Strava segment",
           "required": true
         },
         {
