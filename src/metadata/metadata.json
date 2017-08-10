@@ -616,12 +616,6 @@
           "type": "Boolean",
           "info": "Whether this is trainer activity",
           "required": false
-        },
-        {
-          "name": "commute",
-          "type": "Boolean",
-          "info": "Whether this is commute activity",
-          "required": false
         }
       ],
       "callbacks": [
@@ -741,12 +735,6 @@
           "type": "Boolean",
           "info": "Whether this is trainer activity",
           "required": false
-        },
-        {
-          "name": "commute",
-          "type": "Boolean",
-          "info": "Whether this is commute activity",
-          "required": false
         }
       ],
       "callbacks": [
@@ -859,13 +847,13 @@
         {
           "name": "before",
           "type": "DatePicker",
-          "info": "Result will start with activities whose startDate is before this value",
+          "info": "Result will start with activities whose startDate is before this value. before and page can not be used in combination. They are independent ways of indicating where in the list of activities to begin the results.",
           "required": false
         },
         {
           "name": "page",
           "type": "Number",
-          "info": "Number of the page to return",
+          "info": "Number of the page to return. before and page can not be used in combination. They are independent ways of indicating where in the list of activities to begin the results.",
           "required": false
         },
         {
@@ -1829,9 +1817,7 @@
           "type": "Select",
           "options": [
             "running",
-            "riding",
-            "this_week",
-            "today"
+            "riding"
           ],
           "info": "Type of activity. Default is riding",
           "required": false
@@ -2175,12 +2161,6 @@
           "name": "trainer",
           "type": "Boolean",
           "info": "Whether this is trainer activity. activities without lat/lng info in the file are auto marked as stationary, set to true to force",
-          "required": false
-        },
-        {
-          "name": "commute",
-          "type": "Boolean",
-          "info": "Whether this is commute activity",
           "required": false
         },
         {

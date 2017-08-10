@@ -15,9 +15,8 @@ $app->post('/api/Strava/createActivity', function ($request, $response, $args) {
     $query_str = $settings['api_url'] . $athlete;
     $dateTime = new DateTime($post_data['args']['startDate']);
     $post_data['args']['startDate'] = $dateTime->format('Y-m-d\TH:i:s\Z');
-    $post_data['args']['commute'] = $post_data['args']['commute'] == 'true' ? 1 : 0;
-    $post_data['args']['trainer'] = $post_data['args']['trainer'] == 'true' ? 1 : 0;
-    $post_data['args']['private'] = $post_data['args']['private'] == 'true' ? 1 : 0;
+    $post_data['args']['trainer'] = \Models\ParamsModifier::booleanToNumber($post_data['args']['trainer']);
+    $post_data['args']['private'] = \Models\ParamsModifier::booleanToNumber($post_data['args']['private']);
     $params = [
         'accessToken' => 'accessToken',
         'responseCode'=> '201',
@@ -28,8 +27,7 @@ $app->post('/api/Strava/createActivity', function ($request, $response, $args) {
         'description' => 'description',
         'distance' => 'distance',
         'private' => 'private',
-        'trainer' => 'trainer',
-        'commute' => 'commute'
+        'trainer' => 'trainer'
     ];
     $result = \Models\ApiRequestFacade::makeRequest($params, $post_data, $query_str, 'POST', 'json');
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);

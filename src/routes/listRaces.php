@@ -11,10 +11,10 @@ $app->post('/api/Strava/listRaces', function ($request, $response, $args) {
         $post_data = $validateRes;
     }
     //forming request to vendor API
-    $year = !empty($post_data['args']['year']) ? $post_data['args']['year']: "";
-    $query_str = $settings['api_url']. 'running_races/'.$year;
+    $query_str = $settings['api_url']. 'running_races';
     $params = [
-        'accessToken' => 'accessToken'
+        'accessToken' => 'accessToken',
+        'year'=> 'year'
     ];
     $result = \Models\ApiRequestFacade::makeRequest($params, $post_data, $query_str);
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);

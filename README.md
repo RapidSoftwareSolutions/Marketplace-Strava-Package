@@ -183,7 +183,6 @@ Create new activity
 | distance    | Number    | Distance of the Strava activity
 | private     | Boolean   | Whether this is private activity
 | trainer     | Boolean   | Whether this is trainer activity
-| commute     | Boolean   | Whether this is commute activity
 
 ## Strava.getSingleActivity
 Returns a detailed representation if the activity is owned by the requesting athlete. 
@@ -207,7 +206,6 @@ Update existing activity
 | gearId      | String | Gear ID of the Strava activity
 | private     | Boolean| Whether this is private activity
 | trainer     | Boolean| Whether this is trainer activity
-| commute     | Boolean| Whether this is commute activity
 
 ## Strava.listMyActivities
 This endpoint returns a list of activities for the authenticated user.
@@ -236,8 +234,8 @@ List the recent activities performed by the current athlete and those they are f
 | Field      | Type      | Description
 |------------|-----------|----------
 | accessToken| String    | Access token provided received from Strava
-| before     | DatePicker| Result will start with activities whose startDate is before this value
-| page       | Number    | Number of the page to return
+| before     | DatePicker| Result will start with activities whose startDate is before this value. before and page can not be used in combination. They are independent ways of indicating where in the list of activities to begin the results.
+| page       | Number    | Number of the page to return. before and page can not be used in combination. They are independent ways of indicating where in the list of activities to begin the results.
 | perPage    | Number    | Number of items per page to return
 
 ## Strava.listActivityZones
@@ -549,7 +547,6 @@ Posting a file for upload will enqueue it for processing. Initial checks will be
 | description | String | Activity description.
 | private     | Boolean| Whether this is private activity
 | trainer     | Boolean| Whether this is trainer activity. activities without lat/lng info in the file are auto marked as stationary, set to true to force
-| commute     | Boolean| Whether this is commute activity
 | externalId  | String | Data filename will be used by default but should be a unique identifie
 
 ## Strava.checkUploadStatus

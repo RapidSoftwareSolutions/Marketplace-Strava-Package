@@ -13,6 +13,9 @@ $app->post('/api/Strava/updateActivity', function ($request, $response, $args) {
     //forming request to vendor API
     $athlete = 'activities/'.$post_data['args']['activityId'];
     $query_str = $settings['api_url']. $athlete;
+
+    $post_data['args']['trainer'] = \Models\ParamsModifier::booleanToNumber($post_data['args']['trainer']);
+    $post_data['args']['private'] = \Models\ParamsModifier::booleanToNumber($post_data['args']['private']);
     $params = [
         'accessToken' => 'accessToken',
         'name' => 'activityName',
@@ -20,7 +23,6 @@ $app->post('/api/Strava/updateActivity', function ($request, $response, $args) {
         'description' => 'description',
         'private' => 'private',
         'trainer' => 'trainer',
-        'commute' => 'commute',
         'gear_id'=> 'gearId'
     ];
     $result = \Models\ApiRequestFacade::makeRequest($params, $post_data, $query_str, 'PUT', 'json');
