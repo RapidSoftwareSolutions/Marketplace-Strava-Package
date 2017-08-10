@@ -607,13 +607,21 @@
         },
         {
           "name": "private",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Whether this is private activity",
           "required": false
         },
         {
           "name": "trainer",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Whether this is trainer activity",
           "required": false
         }
@@ -647,7 +655,11 @@
         },
         {
           "name": "includeAllEfforts",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Used to include all segment efforts in the Result",
           "required": false
         }
@@ -726,13 +738,21 @@
         },
         {
           "name": "private",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Whether this is private activity",
           "required": false
         },
         {
           "name": "trainer",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Whether this is trainer activity",
           "required": false
         }
@@ -1738,7 +1758,11 @@
         },
         {
           "name": "following",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Include athletes which are followed",
           "required": false
         },
@@ -2153,13 +2177,21 @@
         },
         {
           "name": "private",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Whether this is private activity",
           "required": false
         },
         {
           "name": "trainer",
-          "type": "Boolean",
+          "type": "Select",
+          "options": [
+            "true",
+            "false"
+          ],
           "info": "Whether this is trainer activity. activities without lat/lng info in the file are auto marked as stationary, set to true to force",
           "required": false
         },
