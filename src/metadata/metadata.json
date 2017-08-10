@@ -1267,6 +1267,34 @@
       ]
     },
     {
+      "name": "joinClub",
+      "description": "Join a club on behalf of the authenticated athlete. If the club is private the join will need to be approved by a club admin unless the authenticated athlete had previously been invited to the club.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token provided received from Strava",
+          "required": true
+        },
+        {
+          "name": "clubId",
+          "type": "String",
+          "info": "Id of the Strava club",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
       "name": "listClubActivities",
       "description": "Retrieve summary information about activities of a specific club.",
       "args": [
@@ -1299,34 +1327,6 @@
           "type": "DatePicker",
           "info": "Result will start with activities whose startDate is before this value",
           "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "joinClub",
-      "description": "Join a club on behalf of the authenticated athlete. If the club is private the join will need to be approved by a club admin unless the authenticated athlete had previously been invited to the club.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "clubId",
-          "type": "String",
-          "info": "Id of the Strava club",
-          "required": true
         }
       ],
       "callbacks": [
