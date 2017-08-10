@@ -44,7 +44,8 @@ class ParamsModifier
 
     public static function booleanToNumber($param)
     {
-        $result = $param ? '1' : '0';
+
+        $result = $param == 'true' ? "1" : "0";
         return $result;
     }
 }

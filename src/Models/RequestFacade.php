@@ -10,7 +10,7 @@ class RequestFacade
     {
 
         foreach ($params as $key => $value) {
-            if (!empty($post_data['args'][$value])) {
+            if (strlen($post_data['args'][$value]) > 0) {
                 $body[$key] = $post_data['args'][$value];
             }
         }
