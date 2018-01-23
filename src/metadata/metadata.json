@@ -181,46 +181,7 @@
         }
       ]
     },
-    {
-      "name": "listBothFollowing",
-      "description": "Retrieve the athletes who both the authenticated user and the indicated athlete are following.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "athleteId",
-          "type": "String",
-          "info": "Id of the Strava athlete",
-          "required": true
-        },
-        {
-          "name": "page",
-          "type": "Number",
-          "info": "Number of the page to return",
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "Number",
-          "info": "Number of items per page to return",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
+
     {
       "name": "getCurrentAthlete",
       "description": "This request is used to retrieve information about the currently authenticated athlete.",
@@ -243,34 +204,7 @@
         }
       ]
     },
-    {
-      "name": "getAnotherAthlete",
-      "description": "This request is used to retrieve information about any athlete on Strava.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "athleteId",
-          "type": "String",
-          "info": "Id of the Strava athlete",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
+
     {
       "name": "updateCurrentAthlete",
       "description": "Update current athlete's information on Strava.",
@@ -814,86 +748,7 @@
         }
       ]
     },
-    {
-      "name": "listRelatedActivities",
-      "description": "Returns the activities that were matched as “with this group”.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "activityId",
-          "type": "String",
-          "info": "Id of the Strava activity",
-          "required": true
-        },
-        {
-          "name": "page",
-          "type": "Number",
-          "info": "Number of the page to return",
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "Number",
-          "info": "Number of items per page to return",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "listFriendsActivities",
-      "description": "List the recent activities performed by the current athlete and those they are following",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "before",
-          "type": "DatePicker",
-          "info": "Result will start with activities whose startDate is before this value. before and page can not be used in combination. They are independent ways of indicating where in the list of activities to begin the results.",
-          "required": false
-        },
-        {
-          "name": "page",
-          "type": "Number",
-          "info": "Number of the page to return. before and page can not be used in combination. They are independent ways of indicating where in the list of activities to begin the results.",
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "Number",
-          "info": "Number of items per page to return",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
+
     {
       "name": "listActivityZones",
       "description": "Heartrate and power zones are set by the athlete. This endpoint returns the time (seconds) in each zone.",
@@ -1870,34 +1725,7 @@
         }
       ]
     },
-    {
-      "name": "getSegmentSingleEffort",
-      "description": "Retrieve details about a specific segment effort. The effort must be public or it must correspond to the current athlete.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "effortId",
-          "type": "String",
-          "info": "Id of the segment effort",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
+
     {
       "name": "getActivityStreams",
       "description": "Retrieve details about a specific segment effort. The effort must be public or it must correspond to the current athlete.",
@@ -1958,66 +1786,7 @@
         }
       ]
     },
-    {
-      "name": "getEffortStreams",
-      "description": "A segment effort represents an attempt on a segment. This resource returns a subset of the activity streams that correspond to that effort.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "effortId",
-          "type": "String",
-          "info": "Id of the Strava effort",
-          "required": true
-        },
-        {
-          "name": "types",
-          "type": "List",
-          "structure": {
-            "name": "type",
-            "type": "String",
-            "info": "Single type"
-          },
-          "info": ":List of types, if the activity does not have that stream it will not be included in the response",
-          "required": true
-        },
-        {
-          "name": "resolution",
-          "type": "Select",
-          "options": [
-            "low",
-            "medium",
-            "high"
-          ],
-          "info": "Default is all, indicates desired number of data points, streams will only be down sampled",
-          "required": false
-        },
-        {
-          "name": "seriesType",
-          "type": "Select",
-          "options": [
-            "time",
-            "distance"
-          ],
-          "info": "Relevant only if using resolution, used to index the streams if the stream is being reduced",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
+   
     {
       "name": "getSegmentStreams",
       "description": "This resource returns a subset of the activity streams that correspond to segment. Only distance, altitude and latlng stream types are available.",
@@ -2279,7 +2048,7 @@
           "name": "verifyToken",
           "type": "String",
           "info": "User state specified by the user",
-          "required": false
+          "required": true
         }
       ],
       "callbacks": [

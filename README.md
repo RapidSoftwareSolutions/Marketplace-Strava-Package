@@ -218,25 +218,6 @@ This endpoint returns a list of activities for the authenticated user.
 | page       | Number    | Number of the page to return
 | perPage    | Number    | Number of items per page to return
 
-## Strava.listRelatedActivities
-Returns the activities that were matched as “with this group”.
-
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token provided received from Strava
-| activityId | String| Id of the Strava activity
-| page       | Number| Number of the page to return
-| perPage    | Number| Number of items per page to return
-
-## Strava.listFriendsActivities
-List the recent activities performed by the current athlete and those they are following
-
-| Field      | Type      | Description
-|------------|-----------|----------
-| accessToken| String    | Access token provided received from Strava
-| before     | DatePicker| Result will start with activities whose startDate is before this value. before and page can not be used in combination. They are independent ways of indicating where in the list of activities to begin the results.
-| page       | Number    | Number of the page to return. before and page can not be used in combination. They are independent ways of indicating where in the list of activities to begin the results.
-| perPage    | Number    | Number of items per page to return
 
 ## Strava.listActivityZones
 Heartrate and power zones are set by the athlete. This endpoint returns the time (seconds) in each zone.
@@ -485,14 +466,6 @@ This endpoint can be used to find popular segments within a given area.
 | minCategory  | Number| Minimum climb category filter
 | maxCategory  | Number| Maximum climb category filter
 
-## Strava.getSegmentSingleEffort
-Retrieve details about a specific segment effort. The effort must be public or it must correspond to the current athlete.
-
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token provided received from Strava
-| effortId   | String| Id of the segment effort
-
 ## Strava.getActivityStreams
 Retrieve details about a specific segment effort. The effort must be public or it must correspond to the current athlete.
 
@@ -504,16 +477,6 @@ Retrieve details about a specific segment effort. The effort must be public or i
 | resolution | Select| Default is all, indicates desired number of data points, streams will only be down sampled
 | seriesType | Select| Relevant only if using resolution, used to index the streams if the stream is being reduced
 
-## Strava.getEffortStreams
-A segment effort represents an attempt on a segment. This resource returns a subset of the activity streams that correspond to that effort.
-
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token provided received from Strava
-| effortId   | String| Id of the Strava effort
-| types      | List  | :List of types, if the activity does not have that stream it will not be included in the response
-| resolution | Select| Default is all, indicates desired number of data points, streams will only be down sampled
-| seriesType | Select| Relevant only if using resolution, used to index the streams if the stream is being reduced
 
 ## Strava.getSegmentStreams
 This resource returns a subset of the activity streams that correspond to segment. Only distance, altitude and latlng stream types are available.
