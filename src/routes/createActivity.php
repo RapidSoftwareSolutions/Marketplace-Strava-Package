@@ -31,7 +31,8 @@ $app->post('/api/Strava/createActivity', function ($request, $response, $args) {
         'description' => 'description',
         'distance' => 'distance',
         'private' => 'private',
-        'trainer' => 'trainer'
+        'trainer' => 'trainer',
+        'commute' => 'commute'
     ];
     $result = \Models\ApiRequestFacade::makeRequest($params, $post_data, $query_str, 'POST', 'json');
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);

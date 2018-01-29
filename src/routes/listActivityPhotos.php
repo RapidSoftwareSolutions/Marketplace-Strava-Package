@@ -18,6 +18,9 @@ $app->post('/api/Strava/listActivityPhotos', function ($request, $response, $arg
         'page'=> 'page',
         'per_page' => 'perPage'
     ];
+    $params['photo_sources'] = 'photo_sources';
+    $post_data['args']['photo_sources'] = true;
+
     $result = \Models\ApiRequestFacade::makeRequest($params, $post_data, $query_str);
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
 

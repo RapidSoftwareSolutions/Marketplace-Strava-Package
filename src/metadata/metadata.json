@@ -112,12 +112,6 @@
           "required": true
         },
         {
-          "name": "athleteId",
-          "type": "String",
-          "info": "Id of the Strava athlete",
-          "required": false
-        },
-        {
           "name": "page",
           "type": "Number",
           "info": "Number of the page to return",
@@ -150,12 +144,6 @@
           "type": "String",
           "info": "Access token provided received from Strava",
           "required": true
-        },
-        {
-          "name": "athleteId",
-          "type": "String",
-          "info": "Id of the Strava athlete",
-          "required": false
         },
         {
           "name": "page",
@@ -495,7 +483,6 @@
             "ride",
             "run",
             "swim",
-            "workout",
             "hike",
             "walk",
             "nordicski",
@@ -510,7 +497,18 @@
             "snowboard",
             "snowshoe",
             "ebikeride",
-            "virtualride"
+            "virtualride",
+            "Canoeing",
+            "Crossfit",
+            "Elliptical",
+            "Kayaking",
+            "RockClimbing",
+            "Rowing",
+            "StairStepper",
+            "StandUpPaddling",
+            "Surfing",
+            "WeightTraining",
+            "Yoga"
           ],
           "info": "Type of the Strava activity",
           "required": true
@@ -537,6 +535,13 @@
           "name": "distance",
           "type": "Number",
           "info": "Distance of the Strava activity",
+          "required": false
+        },
+        {
+          "name": "commute",
+          "type": "Select",
+          "options":["true","false"],
+          "info": "et to true to mark as commute.",
           "required": false
         },
         {
@@ -641,19 +646,30 @@
             "workout",
             "hike",
             "walk",
-            "nordicski",
-            "alpineski",
-            "backcountryski",
-            "iceskate",
-            "inlineskate",
+            "nordicSki",
+            "alpineSki",
+            "backcountrySki",
+            "iceSkate",
+            "inlineSkate",
             "kitesurf",
-            "rollerski",
+            "rollerSki",
             "windsurf",
             "workout",
             "snowboard",
             "snowshoe",
-            "ebikeride",
-            "virtualride"
+            "EBikeRide",
+            "virtualRide",
+            "Canoeing",
+            "Crossfit",
+            "Elliptical",
+            "Kayaking",
+            "RockClimbing",
+            "Rowing",
+            "StairStepper",
+            "StandUpPaddling",
+            "Surfing",
+            "WeightTraining",
+            "Yoga"
           ],
           "info": "Type of the Strava activity",
           "required": false
@@ -851,7 +867,8 @@
         },
         {
           "name": "upcoming",
-          "type": "String",
+          "type": "Select",
+          "options":["true","false"],
           "info": "Only include future events if true",
           "required": false
         }
@@ -1587,12 +1604,15 @@
           "name": "ageGroup",
           "type": "Select",
           "options": [
-            "0_24",
+            "0_19",
+            "20_24",
             "25_34",
             "35_44",
             "45_54",
             "55_64",
-            "65_plus"
+            "65_69",
+            "70_74",
+            "75_plus"
           ],
           "info": "Age group of athletes",
           "required": false
@@ -1601,12 +1621,26 @@
           "name": "weightClass",
           "type": "Select",
           "options": [
-            "0_54",
+            "0_74",
+            "75_99",
+            "100_124",
+            "125_149",
+            "150_164",
+            "165_179",
+            "180_199",
+            "200_224",
+            "225_249",
+            "250_plus",
+            "0_34",
+            "35_44",
+            "45_54",
             "55_64",
             "65_74",
             "75_84",
             "85_94",
-            "95_plus"
+            "95_104",
+            "105_114",
+            "115_plus"
           ],
           "info": "Weight class of athletes in kg",
           "required": false
@@ -1649,6 +1683,13 @@
           "name": "page",
           "type": "Number",
           "info": "Number of the page to return",
+          "required": false
+        },
+        {
+          "name": "gender",
+          "type": "Select",
+          "options":["M","F"],
+          "info": "Gender. Male or Female.",
           "required": false
         },
         {
@@ -1915,19 +1956,30 @@
             "workout",
             "hike",
             "walk",
-            "nordicski",
-            "alpineski",
-            "backcountryski",
-            "iceskate",
-            "inlineskate",
+            "nordicSki",
+            "alpineSki",
+            "backcountrySki",
+            "iceSkate",
+            "inlineSkate",
             "kitesurf",
-            "rollerski",
+            "rollerSki",
             "windsurf",
             "workout",
             "snowboard",
             "snowshoe",
-            "ebikeride",
-            "virtualride"
+            "EBikeRide",
+            "virtualRide",
+            "Canoeing",
+            "Crossfit",
+            "Elliptical",
+            "Kayaking",
+            "RockClimbing",
+            "Rowing",
+            "StairStepper",
+            "StandUpPaddling",
+            "Surfing",
+            "WeightTraining",
+            "Yoga"
           ],
           "info": "Type of the Strava activity",
           "required": false
@@ -1952,6 +2004,13 @@
             "false"
           ],
           "info": "Whether this is private activity",
+          "required": false
+        },
+        {
+          "name": "commute",
+          "type": "Select",
+          "options":["true","false"],
+          "info": "et to true to mark as commute.",
           "required": false
         },
         {

@@ -63,7 +63,6 @@ List athlete's friends
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token provided received from Strava
-| athleteId  | String| Id of the Strava athlete
 | page       | Number| Number of the page to return
 | perPage    | Number| Number of items per page to return
 
@@ -73,19 +72,9 @@ List athlete's followers
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token provided received from Strava
-| athleteId  | String| Id of the Strava athlete
 | page       | Number| Number of the page to return
 | perPage    | Number| Number of items per page to return
 
-## Strava.listBothFollowing
-Retrieve the athletes who both the authenticated user and the indicated athlete are following.
-
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token provided received from Strava
-| athleteId  | String| Id of the Strava athlete
-| page       | Number| Number of the page to return
-| perPage    | Number| Number of items per page to return
 
 ## Strava.getCurrentAthlete
 This request is used to retrieve information about the currently authenticated athlete.
@@ -183,6 +172,7 @@ Create new activity
 | distance    | Number    | Distance of the Strava activity
 | private     | Boolean   | Whether this is private activity
 | trainer     | Boolean   | Whether this is trainer activity
+| commute  | Boolean | Set to true to mark as commute.
 
 ## Strava.getSingleActivity
 Returns a detailed representation if the activity is owned by the requesting athlete. 
@@ -453,6 +443,7 @@ Leaderboards represent the ranking of athletes on specific segments.
 | contextEntries| Number | Default is 2, max of 15
 | page          | Number | Number of the page to return
 | perPage       | Number | Number of items per page to return
+| gender      | Select | Gender.Male or Female.
 
 ## Strava.getSegmentsByCoordinates
 This endpoint can be used to find popular segments within a given area.
@@ -511,6 +502,8 @@ Posting a file for upload will enqueue it for processing. Initial checks will be
 | private     | Boolean| Whether this is private activity
 | trainer     | Boolean| Whether this is trainer activity. activities without lat/lng info in the file are auto marked as stationary, set to true to force
 | externalId  | String | Data filename will be used by default but should be a unique identifie
+| commute  | Boolean | Set to true to mark as commute.
+
 
 ## Strava.checkUploadStatus
 Upon upload, Strava will respond with an upload ID. You may use this ID to poll the status of your upload.
