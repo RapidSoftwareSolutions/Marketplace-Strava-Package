@@ -57,25 +57,6 @@ Revoke access token
 |------------|-------|----------
 | accessToken| String| Access token provided received from Strava
 
-## Strava.listFriends
-List athlete's friends
-
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token provided received from Strava
-| page       | Number| Number of the page to return
-| perPage    | Number| Number of items per page to return
-
-## Strava.listFollowers
-List athlete's followers
-
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token provided received from Strava
-| page       | Number| Number of the page to return
-| perPage    | Number| Number of items per page to return
-
-
 ## Strava.getCurrentAthlete
 This request is used to retrieve information about the currently authenticated athlete.
 

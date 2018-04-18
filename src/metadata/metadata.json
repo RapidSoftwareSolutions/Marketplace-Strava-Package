@@ -102,75 +102,6 @@
       ]
     },
     {
-      "name": "listFriends",
-      "description": "List athlete's friends",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "page",
-          "type": "Number",
-          "info": "Number of the page to return",
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "Number",
-          "info": "Number of items per page to return",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "listFollowers",
-      "description": "List athlete's followers",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token provided received from Strava",
-          "required": true
-        },
-        {
-          "name": "page",
-          "type": "Number",
-          "info": "Number of the page to return",
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "Number",
-          "info": "Number of items per page to return",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-
-    {
       "name": "getCurrentAthlete",
       "description": "This request is used to retrieve information about the currently authenticated athlete.",
       "args": [
@@ -192,7 +123,6 @@
         }
       ]
     },
-
     {
       "name": "updateCurrentAthlete",
       "description": "Update current athlete's information on Strava.",
